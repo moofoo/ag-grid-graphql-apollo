@@ -3,15 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ag-grid-community": "^21.2.2",
+    "ag-grid-enterprise": "^21.2.2",
+    "ag-grid-react": "^21.2.2",
+    "apollo-boost": "^0.4.4",
+    "apollo-link-ws": "^1.0.19",
+    "graphql": "^14.5.8",
     "react": "^16.10.1",
+    "react-apollo": "^3.1.2",
     "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.1.2",
+    "subscriptions-transport-ws": "^0.9.16"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node -r esm server/src/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "esm": "^3.2.25"
   }
 }

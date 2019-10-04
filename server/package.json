@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r esm src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "babel-cli": "^6.26.0",
+    "esm": "^3.2.25"
+  },
+  "dependencies": {
+    "apollo-server": "^2.9.4",
+    "apollo-server-express": "^2.9.4",
+    "graphql": "^14.5.8",
+    "graphql-server-express": "^1.4.1",
+    "graphql-subscriptions": "^1.1.0",
+    "graphql-tools": "^4.0.5",
+    "lodash": "^4.17.15"
+  }
+}
