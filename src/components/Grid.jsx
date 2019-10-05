@@ -25,6 +25,7 @@ function Grid() {
   };
 
   useSubscription(ROWS_UPDATED, {
+    fetchPolicy: 'no-cache',
     onSubscriptionData: ({
       subscriptionData: {
         data: { rowsUpdated }
