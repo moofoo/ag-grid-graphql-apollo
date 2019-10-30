@@ -10,19 +10,20 @@ import { gridOptions } from './gridOptions';
 function Grid() {
   const [gridApi, setGridApi] = useState(null);
 
+  gridOptions.onGridReady = ({ api }) => {
+    if (gridApi === null) {
+      setGridApi(api);
+    }
+  };
+
   useQuery(ROWS_QUERY, {
+    fetchPolicy: 'no-cache',
     onCompleted: ({ rows }) => {
       if (gridApi) {
         gridApi.setRowData(rows);
       }
     }
   });
-
-  gridOptions.onGridReady = ({ api }) => {
-    if (gridApi === null) {
-      setGridApi(api);
-    }
-  };
 
   useSubscription(ROWS_UPDATED, {
     fetchPolicy: 'no-cache',
@@ -38,6 +39,7 @@ function Grid() {
   });
 
   useSubscription(OPTIONS_UPDATED, {
+    fetchPolicy: 'no-cache',
     onSubscriptionData: ({
       subscriptionData: {
         data: { optionsUpdated }
