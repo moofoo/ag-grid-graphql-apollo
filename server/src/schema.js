@@ -20,6 +20,7 @@ const typeDefs = gql`
     _99Out: Int
     batch: Int
     updateDt: String
+    average: Int
   }
 
   type Query {

@@ -10,6 +10,8 @@ import { getMainDefinition } from 'apollo-utilities';
 import './index.css';
 import App from './App';
 
+import { Provider } from './context';
+
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql'
 });
@@ -38,9 +40,11 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <Provider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Provider>,
 
   document.getElementById('root')
 );

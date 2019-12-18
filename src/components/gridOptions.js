@@ -74,6 +74,16 @@ const columnDefs = [
         headerName: 'id',
         field: 'id',
         hide: true
+      },
+      {
+        headerName: 'updateDt',
+        field: 'updateDt',
+        hide: true
+      },
+      {
+        headerName: 'average',
+        field: 'average',
+        hide: true
       }
     ]
   }

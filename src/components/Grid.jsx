@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useQuery, useSubscription } from 'react-apollo';
 import gql from 'graphql-tag';
 import { AgGridReact } from 'ag-grid-react';
@@ -6,9 +6,13 @@ import 'ag-grid-enterprise';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import { gridOptions } from './gridOptions';
+import { Context } from '../context';
 
 function Grid() {
-  const [gridApi, setGridApi] = useState(null);
+  const {
+    state: { gridApi },
+    setGridApi
+  } = useContext(Context);
 
   gridOptions.onGridReady = ({ api }) => {
     if (gridApi === null) {
@@ -21,6 +25,7 @@ function Grid() {
     onCompleted: ({ rows }) => {
       if (gridApi) {
         gridApi.setRowData(rows);
+        setGridApi(gridApi);
       }
     }
   });
@@ -34,6 +39,7 @@ function Grid() {
     }) => {
       if (gridApi) {
         gridApi.batchUpdateRowData({ update: rowsUpdated });
+        setGridApi(gridApi);
       }
     }
   });
@@ -47,12 +53,13 @@ function Grid() {
     }) => {
       if (gridApi) {
         gridApi.setRowData(optionsUpdated);
+        setGridApi(gridApi);
       }
     }
   });
 
   return (
-    <div className='ag-theme-balham' style={{ width: '100%', height: '95%' }}>
+    <div className='ag-theme-balham' style={{ height: '95%' }}>
       <AgGridReact gridOptions={gridOptions} />
     </div>
   );
@@ -79,6 +86,7 @@ const ROWS_QUERY = gql`
       _99Out
       batch
       updateDt
+      average
     }
   }
 `;
@@ -104,6 +112,7 @@ const ROWS_UPDATED = gql`
       _99Out
       batch
       updateDt
+      average
     }
   }
 `;
@@ -129,6 +138,7 @@ const OPTIONS_UPDATED = gql`
       _99Out
       batch
       updateDt
+      average
     }
   }
 `;
