@@ -65,82 +65,55 @@ function Grid() {
   );
 }
 
+const ROW_FIELDS = gql`
+  fragment RowFields on Row {
+    id
+    product
+    portfolio
+    book
+    trade
+    submitterID
+    submitterDealID
+    dealType
+    bidFlag
+    current
+    previous
+    pl1
+    pl2
+    gainDx
+    sxPx
+    _99Out
+    batch
+    updateDt
+    average
+  }
+`;
+
 const ROWS_QUERY = gql`
   {
     rows {
-      id
-      product
-      portfolio
-      book
-      trade
-      submitterID
-      submitterDealID
-      dealType
-      bidFlag
-      current
-      previous
-      pl1
-      pl2
-      gainDx
-      sxPx
-      _99Out
-      batch
-      updateDt
-      average
+      ...RowFields
     }
   }
+  ${ROW_FIELDS}
 `;
 
 const ROWS_UPDATED = gql`
   subscription {
     rowsUpdated {
-      id
-      product
-      portfolio
-      book
-      trade
-      submitterID
-      submitterDealID
-      dealType
-      bidFlag
-      current
-      previous
-      pl1
-      pl2
-      gainDx
-      sxPx
-      _99Out
-      batch
-      updateDt
-      average
+      ...RowFields
     }
   }
+  ${ROW_FIELDS}
 `;
 
 const OPTIONS_UPDATED = gql`
   subscription {
     optionsUpdated {
-      id
-      product
-      portfolio
-      book
-      trade
-      submitterID
-      submitterDealID
-      dealType
-      bidFlag
-      current
-      previous
-      pl1
-      pl2
-      gainDx
-      sxPx
-      _99Out
-      batch
-      updateDt
-      average
+      ...RowFields
     }
   }
+  ${ROW_FIELDS}
 `;
 
 export default React.memo(Grid);
